@@ -1,12 +1,13 @@
 package principal.jsf.principal;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "helloBean")
 @SessionScoped
-public class HelloBean  {
+public class HelloBean implements Serializable  {
 
 	private static final long serialVersionUID = 1;
 
@@ -22,6 +23,6 @@ public class HelloBean  {
 
 	public HelloBean()
 	{
-		
+		this.name = "Name JSF";
 	}
 }
