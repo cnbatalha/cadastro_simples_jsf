@@ -6,7 +6,7 @@
 	<display-name>cadastro</display-name>
 
 	<welcome-file-list>
-		<welcome-file>index.xhtml</welcome-file>
+		<!--  welcome-file>index.xhtml</welcome-file-->
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
@@ -39,10 +39,10 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
+	<!-- servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping-->
 
 	<filter>
 		<filter-name>conexaoFilter</filter-name>

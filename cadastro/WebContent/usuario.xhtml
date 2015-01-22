@@ -12,13 +12,19 @@
 	<h:form>
 		<h:messages></h:messages>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome" for="name"/>
-			<h:inputText id="name" label="Nome" value="#{usuarioBean.usuario.nome}" required="true"/>
-			<h:outputLabel value="E-mail" for="email"/>
-			<h:inputText id="email" label="Email" value="#{usuarioBean.usuario.email}" required="true"/>
-						
+			<h:outputLabel value="Nome" for="name" />
+			<h:inputText id="name" label="Nome"
+				value="#{usuarioBean.usuario.nome}" required="true" />
+			<h:outputLabel value="E-mail" for="email" />
+			<h:inputText id="email" label="Email"
+				value="#{usuarioBean.usuario.email}" required="true" />
+
 			<h:commandButton action="#{usuarioBean.salvar}" value="Salvar" />
 		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+		<h:commandLink action="#{usuarioBean.gerenciar}"> Gerenciar Usuario </h:commandLink>
 	</h:form>
 </h:body>
 </html>
