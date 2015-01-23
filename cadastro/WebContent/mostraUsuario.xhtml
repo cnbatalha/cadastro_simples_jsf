@@ -5,14 +5,14 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
+	<title>Usuário</title>
 </h:head>
 <h:body>
-	Página Principal!
+	<h1>Usuário Cadastrado</h1>
+	Nome: <h:outputText value="#{usuarioBean.name}" for="name" />
+	Email: <h:outputText value="#{usuarioBean.email}" for="email" />	
 	<h:form>
-		<h:inputText value="#{helloBean.name}">
-		</h:inputText>
-		<h:commandButton value="Welcome Me" action="welcome"></h:commandButton>
+		<h:commandLink action="inicio" value="inicio"/>
 	</h:form>
 </h:body>
 </html>

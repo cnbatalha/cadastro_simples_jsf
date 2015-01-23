@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- HTTP security configurations -->
+	<!-- http auto-config="false" use-expressions="true" entry-point-ref="springSocialSecurityEntryPoint" 
+		> <custom-filter position="FORM_LOGIN_FILTER" ref="springSocialSecurityAuthenticationFilter" 
+		/> <logout logout-url="/resources/j_spring_security_logout" /> <access-denied-handler 
+		ref="springSocialSecurityAccessDeniedHandler"/ -->
+
+	<http>
+		<!-- Configure these elements to secure URIs in your application -->
+		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO" />
+		<form-login login-page="/publico/login.jsf"
+			always-use-default-target="true" default-target-url="/restrito/principal.jsf"
+			authentication-failure-url="/publico/login.jsf?login_error=1" />
+
+		<!-- remember-me services-ref="springSocialSecurityRememberMeServices" 
+			key="springSocialSecurity" / -->
+		<logout />
+		<remember-me />
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="cadastroDataSource"
+				authorities-by-username-query="SELECT u.email, p.permissao FROM  usuario u, usuario_permissao p
+								WHERE u.id = p.usuario AND u.email = ?"
+				users-by-username-query="SELECT email, senha, ativo FROM usuario WHERE email = ?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+
+	<!--  
+	<beans:bean id="springSocialSecurityEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:property name="loginFormUrl" value="/sociallogin" />
+	</beans:bean>
+	-->
+
+	<!-- Configure Authentication mechanism 
+	<authentication-manager alias="authenticationManager">
+	</authentication-manager>
+
+	<beans:bean id="springSocialSecurityRememberMeServices"
+		class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+		<beans:property name="userDetailsService"
+			ref="springSocialSecurityUserDetailsService" />
+		<beans:property name="tokenRepository" ref="tokenRepository" />
+		<beans:property name="key" value="springSocialSecurity" />
+		<beans:property name="alwaysRemember" value="true" />
+		<beans:property name="tokenValiditySeconds" value="3600" />
+	</beans:bean>
+
+	<beans:bean id="tokenRepository"
+		class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+		<beans:property name="createTableOnStartup" value="true" />
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	-->
+	
+</beans:beans>

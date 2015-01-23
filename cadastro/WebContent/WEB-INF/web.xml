@@ -4,22 +4,32 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>cadastro</display-name>
-	
+
 	<welcome-file-list>
-		<welcome-file>index.xhtml</welcome-file>
+		<!-- welcome-file>index.xhtml</welcome-file -->
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Production</param-value>
 	</context-param>
-	
+
+	<!-- configuracao spring security -->
+	<resource-ref>
+		<description>DataSource Cadastro</description>
+		<res-ref-name>jdbc/CadastroDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- context-param> <param-name>javax.faces.DEFAULT_SUFFIX</param-name> 
+		<param-value>.xhtml</param-value> </context-param -->
+
 	<context-param>
-		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-		<param-value>.xhtml</param-value>
-	</context-param>	
-	
-	<context-param>
+		<!-- Configuraçao anterior ao Spring-security -->
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>resources.application</param-value>
 	</context-param>
@@ -27,22 +37,54 @@
 	<listener>
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener>
-	
+
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>/faces/*</url-pattern>
+		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-	
-		<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
+
+	<!-- servlet-mapping> <servlet-name>Faces Servlet</servlet-name> <url-pattern>*.xhtml</url-pattern> 
+		</servlet-mapping -->
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+			/WEB-INF/applicationContext-security.xml
+		</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Configuracao anterior ao Spring Security -->
+	<filter>
+		<filter-name>conexaoFilter</filter-name>
+		<filter-class>cadastro.web.filter.ConexaoHibernateFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>conexaoFilter</filter-name>
+		<url-pattern>*.jsf</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>conexaoFilter</filter-name>
 		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping>
-	
+	</filter-mapping>
 
 </web-app>
