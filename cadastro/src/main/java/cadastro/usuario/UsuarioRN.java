@@ -17,10 +17,18 @@ public class UsuarioRN {
 		return this.usuarioDAO.listar();
 	}
 
-	public String salvar(Usuario usuario)
+	public void salvar(Usuario usuario)
 	{
-		usuarioDAO.salvar(usuario);
-		
-		return "usuarioSucesso";
+		Integer codigo = usuario.getId();
+		if ( codigo == null || codigo == 0)
+		{
+			usuario.getPermissao().add("ROLE_USUARIO");
+			this.usuarioDAO.salvar(usuario);	
+		}
+		else
+		{
+			this.usuarioDAO.atualizar(usuario);
+		}
+				
 	}
 }
