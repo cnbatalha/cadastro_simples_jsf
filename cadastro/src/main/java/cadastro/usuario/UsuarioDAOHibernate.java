@@ -2,6 +2,7 @@ package cadastro.usuario;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
@@ -47,14 +48,18 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 
 	@Override
 	public Usuario carregar(Integer id) {
-		// TODO Auto-generated method stub		
-		return (Usuario) this.session.get( Usuario.class, id);
+		// TODO Auto-generated method stub
+		return (Usuario) this.session.get(Usuario.class, id);
 	}
 
 	@Override
 	public Usuario buscarPorLogin(String login) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql = "select u from Usuario u where u.login = :login";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setString("login", login);
+		return (Usuario) consulta.uniqueResult();
+
 	}
 
 	@Override

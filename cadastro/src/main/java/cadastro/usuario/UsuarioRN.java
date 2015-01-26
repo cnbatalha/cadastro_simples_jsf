@@ -17,6 +17,11 @@ public class UsuarioRN {
 		return this.usuarioDAO.listar();
 	}
 
+	public Usuario buscaPorLogin(String login)
+	{
+		return this.usuarioDAO.buscarPorLogin(login);
+	}
+	
 	public void salvar(Usuario usuario)
 	{
 		Integer codigo = usuario.getId();
