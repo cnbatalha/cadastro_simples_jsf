@@ -3,29 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:sec="http://www.springframework.org/security/facelets/tags" >
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Principal</title>
-</h:head>
-<h:body>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="corpo">
+		<h1>Sistema de Cadastro</h1>
 	
-	<h1>Sistema de Cadastro</h1>
-
-	Usuário Logado #{request.remoteUser}
-	<br/>
-	
-	<h:form>
-		<sec:ifAnyGranted roles="ROLE_ADMINISTRATOR">
-			<h:commandLink action="/admin/principal" title="Administrativo">
-				<!-- imagem --> 
-			</h:commandLink>
-		</sec:ifAnyGranted>
-	</h:form>
-	
-	<a onclick="document.location='#{request.contextPath}/j_spring_security_logout'" title="Sair">
-		<!-- imagem de sair -->
-	</a>
-	
-</h:body>
+		Usuário Logado #{request.remoteUser}
+		<br/>
+		
+		<h:form>
+			<sec:ifAnyGranted roles="ROLE_ADMINISTRATOR">
+				<h:commandLink action="/admin/principal" title="Administrativo">
+					<!-- imagem --> 
+				</h:commandLink>
+			</sec:ifAnyGranted>
+		</h:form>
+		
+		<a onclick="document.location='#{request.contextPath}/j_spring_security_logout'" title="Sair">
+			<!-- imagem de sair -->
+		</a>
+	</ui:define>
+</ui:composition>	
 </html>
