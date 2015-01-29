@@ -1,21 +1,28 @@
 package cadastro.usuario;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "usuarioBean")
 @SessionScoped
-public class UsuarioBean {
+public class UsuarioBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Usuario usuario = new Usuario();
 	private List<Usuario> lista;
 
 	public String novo() {
 		this.usuario = new Usuario();
-		return "usuario";
+		return "/publico/usuario";
 	}
 
 	public String salvar() {
@@ -24,7 +31,7 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(usuario);
 
-		this.lista = usuarioRN.listar();
+		// this.lista = usuarioRN.listar();
 		
 		return "usuarioSucesso";
 	}

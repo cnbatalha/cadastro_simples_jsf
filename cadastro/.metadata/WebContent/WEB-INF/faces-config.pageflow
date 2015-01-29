@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14188252500461" configfile="/cadastro/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf14211735088450" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14211735088462 pf14219574075060" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="usuario.xhtml" x="338" y="562" id="pf14211735088474" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14211735088475 pf14217712663284" inlinks="pf14211735088462" path="/usuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="mostraUsuario.xhtml" x="554" y="562" id="pf14211735088486" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14211735088475" path="/mostraUsuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listaUsuario.xhtml" id="pf14217712663285" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14217712663284" path="/listaUsuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.html" id="pf14219574075071" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14219574075060" path="/index.html"/>
-  <links id="pf14211735088462" target="pf14211735088474" source="pf14211735088450" outcome="usuario"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="84" y="396" id="pf14211735088450" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14219574075060" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="usuario.xhtml" x="323" y="396" id="pf14211735088474" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14211735088475 pf14217712663284" path="/usuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="mostraUsuario.xhtml" x="588" y="396" id="pf14211735088486" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14211735088475" path="/mostraUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaUsuario.xhtml" x="312" y="96" id="pf14217712663285" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14217712663284" path="/listaUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.html" x="76" y="96" id="pf14219574075071" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14219574075060" path="/index.html"/>
   <links id="pf14211735088475" target="pf14211735088486" source="pf14211735088474" outcome="sucesso"/>
   <links id="pf14217712663284" target="pf14217712663285" source="pf14211735088474" outcome="gerenciarUsuario"/>
   <links id="pf14219574075060" target="pf14219574075071" source="pf14211735088450" outcome="inicio"/>

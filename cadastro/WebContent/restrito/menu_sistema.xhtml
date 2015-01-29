@@ -20,7 +20,10 @@
 							<h:commandLink action="/restrito/listaUsuario" title="Administrativo">
 							Administrativo
 							</h:commandLink>
-						</sec:ifAnyGranted> 
+						</sec:ifAnyGranted>
+						<h:outputLink value="javascript:void(0)" onclick="document.location='#{request.contextPath}/j_spring_security_logout'" title="Sair" >
+							Sair
+						</h:outputLink>						 
 					</td>
 				</tr>
 			</table>

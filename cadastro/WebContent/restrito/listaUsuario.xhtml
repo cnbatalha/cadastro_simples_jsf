@@ -8,6 +8,8 @@
 	<title>Sistema de Cadastro</title>
 </h:head>
 <h:body>
+    Itens :	#{usuarioBean.lista.size()}
+
 	<h1>Lista de Usuarios</h1>
 	<h:dataTable value="#{usuarioBean.lista}" var="usuario">
 		<h:column>
