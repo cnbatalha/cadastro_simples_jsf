@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="corpo">
+		<h:form>
+			<h:messages></h:messages>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Nome" for="name" />
+				<h:inputText id="name" label="Nome"
+					value="#{clienteBean.cliente.nome}" required="true" />
+				<h:outputLabel value="E-mail" for="email" />
+				<h:inputText id="email" label="Email"
+					value="#{clienteBean.cliente.email}" required="true" />
+
+				<h:commandButton action="#{clienteBean.salvar}" value="Salvar" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

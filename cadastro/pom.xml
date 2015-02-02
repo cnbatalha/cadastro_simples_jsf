@@ -153,6 +153,15 @@
 			<version>3.1.2.RELEASE</version>
 		</dependency>
 
+		<!-- PrimeFaces -->
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.0</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<finalName>cadastro</finalName>

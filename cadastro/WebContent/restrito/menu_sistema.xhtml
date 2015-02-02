@@ -4,29 +4,52 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags">
-<ui:composition>						
+<ui:composition>
+
+
 	<sec:ifAnyGranted roles="ROLE_USUARIO">
 		<h:form id="menu">
-			<table width="100%">
+			<p:menubar>
+				<p:menuitem action="/restrito/principal" value="Principal" />
+				<p:menuitem action="/restrito/listaCliente" value="Cliente" />
+				<p:menuitem action="/restrito/draw" value="JavaScript" />
+				<p:menuitem rendered="#{p:ifGranted('ROLE_ADMINISTRATOR')}"
+					action="/restrito/listaUsuario" value="Administrativo" />
+
+				<p:menuitem value="Sair"
+					onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+					title="Sair" />
+			</p:menubar>
+			<!-- table width="100%">
 				<tr>
-					<td>
-						<h:commandLink action="/restrito/principal" title="Principal">
+					<td><h:commandLink action="/restrito/principal"
+							title="Principal">
 							Principal
-						</h:commandLink>						
-					</td>
-					<td align="left">
-						<sec:ifAnyGranted roles="ROLE_ADMINISTRATOR">
-							<h:commandLink action="/restrito/listaUsuario" title="Administrativo">
+						</h:commandLink></td>
+					<td align="left"><sec:ifAnyGranted roles="ROLE_ADMINISTRATOR_MASTER">
+							<h:commandLink action="/restrito/listaUsuario"
+								title="Administrativo">
 							Administrativo
 							</h:commandLink>
-						</sec:ifAnyGranted>
-						<h:outputLink value="javascript:void(0)" onclick="document.location='#{request.contextPath}/j_spring_security_logout'" title="Sair" >
+						</sec:ifAnyGranted> <h:outputLink value="javascript:void(0)"
+							onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+							title="Sair">
 							Sair
-						</h:outputLink>						 
-					</td>
+						</h:outputLink></td>
 				</tr>
-			</table>
+			</table -->
+		</h:form>
+
+		<h:form>
+			<p:stack expanded="true" >
+				<p:menuitem value="Principal" action="/restrito/principal" />
+				<p:menuitem action="/restrito/listaCliente" value="Cliente" />
+
+				<p:menuitem rendered="#{p:ifGranted('ROLE_ADMINISTRATOR')}"
+					action="/restrito/listaUsuario" value="Administrativo" />
+			</p:stack>
 		</h:form>
 	</sec:ifAnyGranted>
 </ui:composition>

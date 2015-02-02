@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="corpo">
+		<script>
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			ctx.fillStyle = "#FF0000";
+			ctx.fillRect(0, 0, 150, 75)
+		</script>
+
+		<canvas id="myCanvas" width="200" height="100"
+			style="border:1px solid #000000;"> </canvas>
+
+	</ui:define>
+</ui:composition>
+</html>

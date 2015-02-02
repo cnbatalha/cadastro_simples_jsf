@@ -3,6 +3,7 @@ package cadastro.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import cadastro.cliente.Cliente;
 import cadastro.usuario.Usuario;
 
 public class HibernateUtil {
@@ -12,7 +13,8 @@ public class HibernateUtil {
 	private static SessionFactory buildSessionFactory() {
 		Configuration cfg = new Configuration();
 		cfg.configure("hibernate.cfg.xml");
-		cfg.addAnnotatedClass( Usuario.class);
+		cfg.addAnnotatedClass(Usuario.class);
+		cfg.addAnnotatedClass(Cliente.class);
 		return cfg.buildSessionFactory();
 	}
 

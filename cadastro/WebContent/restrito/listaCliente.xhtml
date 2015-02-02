@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="corpo">
+    
+    <h:form>
+    	<p:commandButton action="#{clienteBean.novo}" value="Novo" title="Novo"/>
+    </h:form>
+    
+	<p:panel header="Clientes" style="width:50%" >
+		<p:dataTable value="#{clienteBean.lista}" var="cliente">
+			<p:column headerText="Nome">				
+				<h:outputText value="#{cliente.nome}" />
+			</p:column>
+			<p:column headerText="E-mail">
+				<h:outputText value="#{cliente.email}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
